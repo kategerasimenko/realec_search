@@ -1,0 +1,24 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,300italic&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+	<script src="http://code.jquery.com/jquery-latest.js"></script>
+	<script src="{%static 'js/search.js' %}"></script>
+	<title>REALEC search</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<link rel="stylesheet" href="static/css/styles.css">
+</head>
+<body>
+<form action="/search/" method="get">
+    <div class="firstword">
+    {{ form }}
+    </div>
+    <div class="nextword" style="display:none">
+    {{ nextform }}
+    </div>
+    <button type="button" onclick="add_word()">+</button>
+    <input type="submit" value="Submit">
+</form>
+</body>
+</html>
