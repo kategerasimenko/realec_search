@@ -18,3 +18,10 @@ class WordSearchForm(forms.Form):
 class NextWordSearchForm(WordSearchForm):
     distance_from = forms.IntegerField(initial=1)
     distance_to = forms.IntegerField(initial=1)
+    
+    
+class MistakeSearchForm(forms.Form):
+    text = forms.CharField(label='Incorrect word or phrase', max_length=500)
+    correction = forms.CharField(label='Word or phrase in a correction', max_length=500)
+    mistake_choices = sorted(Mistake.objects.values_list('tag',flat=True).distinct())
+    tag = forms.MultipleChoiceField(zip(*[mistake_choices]*2), label='Mistake tag', widget=forms.CheckboxSelectMultiple, required=False) # load from json instead
